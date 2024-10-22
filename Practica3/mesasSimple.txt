@@ -1,0 +1,21 @@
+atomic<int>[N] count;
+count.set(0)
+abandonar[N] = 0;
+mutex2[N] = sem(1)
+juga[N] = sem(0);
+
+
+per(persona){
+	int mesa = conseguirMesa();
+	if(count[mesa].getAndAdd == 3){
+		juga[mesa].signal(4);
+	juga[mesa].wait();
+	jugar();
+	//es necesario para poder decir que jugaron todoos.
+	mutex2.wait();
+	if(count.getAndDec == 0){
+		Abandonaste[mesa].signal(4);
+	}
+	mutex2.signal();
+	abandonaste.wait();
+	abandonarMesa(mesa);

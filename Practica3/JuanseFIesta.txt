@@ -1,0 +1,56 @@
+
+atomic<int> porrones[2];
+
+liberar[15] = sem(0)
+
+next = sem(1)
+cerveza1 = sem(0)
+cerveza2 = sem(0)
+
+	desocupado[2] = sem(1);
+	
+
+
+
+heladera(i){
+	next.wait();
+	
+	enchufarHeladera()
+	
+	AbrirHeladeraa();
+	
+	desocupado[orron].signal();
+	desocupado[litro].signal();
+	
+	cerveza[tipoEnvase].wait();	
+	cerveza[tipoEnvase].wait();
+	
+	cerrarHeladera()
+	
+	enchufar_rapido();
+	
+	porrones[1].set(0);
+	porrones[2].set(0);
+	
+	next.signal();
+	
+}
+
+
+cerveza(i, tipoEnvase){
+	LlegarAbar();
+	//yo quiero que se arme una fila de porones y una de litro
+	bool booool = true
+	while(boooool){
+		desocupado[tipoEnvase].wait()
+		mutex.wait();
+		if(porrones[tipoEnvase].getAndInc < max[tipoEnvase]){ //si no que se quede esperando en desocupado
+			porrones[tipoEnvase].getAndInc();
+			MeMetenEnHeladera();
+			desocupado[tipoEnvase].signal();
+			boooooool = false;
+		}else{
+			cerveza[tipoEnvase].signal();
+		}		
+		mutex.signal();
+}

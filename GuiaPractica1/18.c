@@ -9,7 +9,7 @@ void proceso(int i){
     while(num < 50){
         cerra escritura
         read();
-        num++
+        num++u
         close(pipes[(i + 1) % 3][READ]); //tengo que cerar la otra punta de q estoy escrbiendo? para q no lo lean ahora?   
         escribila en el pipe
 

@@ -1,0 +1,34 @@
+l(){
+	while(true){
+		estoyList().
+		times10: entren.signal();
+		completo.wait();
+		
+		lavar();
+		
+		puedenDescargarme();
+		
+		times10: descarguenme.signal();
+		
+		descargado.wait();
+	}	
+}
+
+P(i){
+	entren.wait();
+	entroAlLavarropas()	
+	mutex.wait();
+	if(count++ == 10){
+		completo.signal()
+	mutex.signal();
+	
+	descarguenme.wait();
+	saquenmeDeAqui();
+	
+	mutex2.wait();
+	if(count2++ == 10){
+		descargado.signal();
+	mutex2.signal();
+	
+}
+12:29

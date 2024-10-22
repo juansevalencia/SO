@@ -1,0 +1,55 @@
+Ejercicio 16
+mutex = sem(1)
+cocina = sem(0)
+M = 20;
+//no respeta un orden cuando no hay mas comida.
+enfermo(){
+	while(true){
+		mutex.wait();
+		if(M == 0){
+			cocina.signal();
+		}else{
+			tomar_porcion();
+			M.getanddec();
+			mutex.signal();	
+			comer();
+		}
+	}
+}
+
+cocinero(){
+	cocina.wait();
+	M.getandAdd(20);
+	mutex.signal();
+}
+			
+//no respeta un orden cunado no hay mas comida.
+
+Ejercicio 16
+mutex[cota_enfermos] = sem(1); fifo;
+			
+cocina = sem(0)
+M = 20;
+// respeta un orden cuando no hay mas comida.
+enfermo(i){
+	while(true){
+		mutex[i].wait();
+		if(M == 0){
+			fifo.push();
+			cocina.signal();
+		}else{
+			tomar_porcion();
+			M.getanddec();
+			mutex[fifo.pop()).signal();	
+			comer();
+		}
+	}
+}
+
+cocinero(){
+	cocina.wait();
+	M.getandAdd(20);
+	mutex[(fifo.pop())].signal();
+}
+			
+//respeta un orden cunado no hay mas comida.

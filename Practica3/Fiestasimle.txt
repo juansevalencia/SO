@@ -1,0 +1,36 @@
+permiso[N] = sem(0);
+permiso[0] = sem(1)
+
+heladera(i){
+	permisoH[i].wait();
+	enchufar()
+	
+	abrir();
+	
+	
+	times 10: porrones.signal()
+	times 15: litro.signal()
+	
+	t.wait();
+	t´.wait();
+	
+	cerrarHeladera()
+	
+	EnfriadoRapido()
+	
+	if(i != N-1): permisoH[i+1].signal();
+	
+	//espera a que se lene
+	
+cerveza(i, tipoEnvase){
+	LlegaraBAR()
+	tipoEnvase.wait();
+	
+	mutex.wait();
+	meMetenEnHeladera()
+	if(count[tipoenvase]++ == max[tipoEnvase]){
+		t.signal();
+	
+	mutex.signal();
+	
+12:07

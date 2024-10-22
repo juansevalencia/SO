@@ -1,0 +1,42 @@
+Bote[0] = sem(1)
+Bote[1] = sem(0)
+atomic<int> abordaron = set(0);
+mutex[2] = (sem(1), sem(1))
+vamos[2] = [sem(0), sem(0)]
+remo = sem(0)
+count_l = 0 = count_c = count
+
+lobo(dir){
+	boooool = true
+	while(booooool){ //por si rebotan un animal que vuelva  apreguntar si esta disp el bote
+		Bote[dir].wait(); //me puedo subir la bote?
+		mutex[DIR].wait();
+		if(count_c == 3 || (count_c == 1 && count_L == 2)){
+			B[dir].signal(); //que se suba otro animal
+			mutex[DIR].signal();
+			
+		}else{
+			If(llegada.getandinc() == 3): vamos[dir].signal(); //se subieron todos
+			mutex[dir].signal(); //habilita que otro pase el mutex
+			
+			vamos[dir].wait();
+			abordar();
+			
+			if(abordaron.getandinc() == 3){
+				remar();
+				remo.signal(4);
+			}
+			
+			remo.wait(); espera a que aparezca el remador
+			
+			//llegaste, baja9 el contador de lobos y que el proceso cabra baje el contador de cabras.
+			
+			count_lobos.getanddec();
+			if(count.getanddec() == 1): B[dir+1 % 2].signal(4);
+			booooool = false; //Para que no se repita el animal y se termine.
+
+		}
+	}
+}			
+
+

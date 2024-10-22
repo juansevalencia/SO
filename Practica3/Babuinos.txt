@@ -1,0 +1,50 @@
+bool cruzando[2] = false
+atomic <int> count = (0, 0)
+atomic<int> esperando[2] = (0, 0)
+pasa[2] = (sem(0), sem(0))
+babuino(dir){
+	//puedo pasar?
+	mutex3.wait();
+	
+	esperando[dir]++;
+	cuerda();
+	mutex3.signal();
+	
+	pasa[dir].wait()
+	mutex2.wait();
+	while((count[dir]++ < 5) and (esperando[dir].getAndDec() > 0) )
+		pasa[dir].signal()
+		mutex2.signal;
+	cruzar();
+	
+	llegue();
+	mutex.wait();
+	if(count.getanddec == 1){
+		cruzando[dir+1 % 2] = false;
+		if(esperando[dir+1 %2]>0){
+			pasa[dir+1 % 2].signal();
+			cruzando[dir+1 % 2] = true; //si habia eserando uno de los otros dale prioridad
+		}else{ //si habia esperanod uno de nosotros y no de ellos dale
+			if(esperando[dir]>0){
+			pasa[dir].signal();
+			cruzando[dir] = true;
+			}
+		}
+	}		
+	mutex.signal();
+}
+
+cuerda(){
+	bool booool = true;
+	while(boooool){
+		if(esperando[0] > 0 and !cruzando[1] ){
+			pasa[0].signal();
+			boool = false;
+		}else{
+			if(eserando[1] > 0 and !cruzando[0]){
+				pasa[1].signal();
+				boool = false;
+			}
+		}
+	}
+}

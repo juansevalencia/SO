@@ -1,0 +1,27 @@
+atomic<int>[N] count;
+count.set(0)
+abandonar[N] = 0;
+
+j[N][2] = sem(0); 
+j[N][1] = sem(0); 
+mutex2[N] = sem(1)
+
+mesa(int mesa){
+		j[mesa][1].wait(); //se queda aca hasta que lo llamen en 0.
+		if(count[mesa].GetAndInc == 3):j[mesa][2].signal(); //manda una vez que entraron los 4
+		j[mesa][2].wait(); 
+		jugar();
+		
+		mutex2.wait();
+		if(count[mesa].getandDec == 0){
+			abandonar[i].signal(4);
+		}
+		mutex2.signal();
+}	
+		
+
+per(persona){
+	int mesa = conseguirMesa();
+	j[mesa][1].signal();
+	abandonar[mesa].wait();
+	abandonarMesa(mesa);
